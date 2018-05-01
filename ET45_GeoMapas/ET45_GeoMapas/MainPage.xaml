@@ -4,8 +4,27 @@
              xmlns:local="clr-namespace:ET45_GeoMapas"
              x:Class="ET45_GeoMapas.MainPage">
 
-	<Label Text="Welcome to Xamarin.Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Grid x:Name="grid" RowSpacing="10" Padding="10" VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="600*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label x:Name="locationData" Text="Información" HorizontalOptions="Center" Font="Arial, 20" Grid.Row="1" >
+            <Label.TextColor>
+                <OnPlatform x:TypeArguments="Color" Android="Black" iOS="Blue" WinPhone="Green" />
+            </Label.TextColor>
+        </Label>
+        <Button x:Name="botonLocalizacion" Text="Obtener posición" BackgroundColor="Silver" Grid.Row="2">
+            <Button.TextColor>
+                <OnPlatform x:TypeArguments="Color" Android="Navy" iOS="Black" WinPhone="Blue" />
+            </Button.TextColor>
+        </Button>
+    </Grid>
 
 </ContentPage>
