@@ -3,5 +3,13 @@
 	<uses-sdk android:minSdkVersion="15" />
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<application android:label="ET45_GeoMapas.Android"></application>
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="ET45_GeoMapas.Android">
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAyOa0IIx9nRkCrVzyXf0IpxoDzjhCG77A" />
+    <meta-data android:name="com.google.android.gms.version" android:value="11.4.2" />
+  </application>
 </manifest>

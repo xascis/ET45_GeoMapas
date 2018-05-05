@@ -52,5 +52,7 @@
 	<string>ET45_GeoMapas</string>
   <key>NSLocationWhenInUseUsageDescription</key>
   <string>This app needs access location when open.</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>We can use your location</string>
 </dict>
 </plist>

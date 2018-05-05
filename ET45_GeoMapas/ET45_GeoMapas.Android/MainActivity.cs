@@ -7,7 +7,6 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
 
 namespace ET45_GeoMapas.Droid
 {

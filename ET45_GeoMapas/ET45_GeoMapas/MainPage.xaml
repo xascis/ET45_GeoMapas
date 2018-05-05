@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:ET45_GeoMapas"
-             x:Class="ET45_GeoMapas.MainPage">
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="ET45_GeoMapas.MainPage"
+             Title="GPS y mapas">
 
     <Grid x:Name="grid" RowSpacing="10" Padding="10" VerticalOptions="Center">
         <Grid.RowDefinitions>
@@ -14,7 +16,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
+        <maps:Map x:Name="miMapa" IsShowingUser="True" MapType="Hybrid" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
         <Label x:Name="locationData" Text="Información" HorizontalOptions="Center" Font="Arial, 20" Grid.Row="1" >
             <Label.TextColor>
                 <OnPlatform x:TypeArguments="Color" Android="Black" iOS="Blue" WinPhone="Green" />

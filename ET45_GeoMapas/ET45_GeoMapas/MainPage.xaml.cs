@@ -7,6 +7,7 @@ using Xamarin.Forms;
 
 using Plugin.Geolocator.Abstractions;
 using Plugin.Geolocator;
+using Xamarin.Forms.Maps;
 
 namespace ET45_GeoMapas
 {
@@ -24,23 +25,25 @@ namespace ET45_GeoMapas
                     if (CrossGeolocator.Current.IsGeolocationEnabled)
                     {
                         locationData.Text += " y está habilitada";
-                    } else
+                    }
+                    else
                     {
                         locationData.Text += " y está desabilitada";
                     }
                 }
-            } else
+            }
+            else
             {
                 locationData.Text = "Localización no soportada por este dispositivo o platadorma.";
                 botonLocalizacion.IsEnabled = false;
             }
 
             botonLocalizacion.Clicked += BotonLocalizacion_Clicked;
-		}
+        }
 
         private async void BotonLocalizacion_Clicked(object sender, EventArgs e)
         {
-            Position position = null;
+            Plugin.Geolocator.Abstractions.Position position = null;
             try
             {
                 var locator = CrossGeolocator.Current;
@@ -49,9 +52,9 @@ namespace ET45_GeoMapas
                 if (position != null)
                 {
                     locationData.Text =
-                        "Última posición conocida: Lat: " + position.Latitude.ToString("0.0000") + 
-                        " Lon: " + position.Longitude.ToString("0.0000") + 
-                        " - Alt; " + position.Altitude.ToString() + 
+                        "Última posición conocida: Lat: " + position.Latitude.ToString("0.0000") +
+                        " Lon: " + position.Longitude.ToString("0.0000") +
+                        " - Alt; " + position.Altitude.ToString() +
                         " Error: " + position.Accuracy.ToString();
                 }
 
@@ -63,6 +66,9 @@ namespace ET45_GeoMapas
                         " Lon: " + position.Longitude.ToString("0.0000") +
                         " Alt; " + position.Altitude.ToString() +
                         " Error: " + position.Accuracy.ToString();
+
+                    var posicionMapa = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
+                    miMapa.MoveToRegion(MapSpan.FromCenterAndRadius(posicionMapa, Distance.FromMeters(1000)));
                 }
 
             }

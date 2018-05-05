@@ -21,6 +21,8 @@ namespace ET45_GeoMapas.UWP
         {
             this.InitializeComponent();
 
+            Xamarin.FormsMaps.Init("FEvkLtJ0NbMlSNXlwJcN~RIqebzr3X2j2zbzMXSwmvQ~AgSWKcHoPos5Tvwsf_8tQHPT8izNKKTOVaMpwFL4g5AKX8iMgOVNHzZEwRh7bOOJ");
+
             LoadApplication(new ET45_GeoMapas.App());
         }
     }
