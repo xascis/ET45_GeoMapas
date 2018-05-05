@@ -13,6 +13,13 @@ namespace ET45_GeoMapas
 {
 	public partial class MainPage : ContentPage
 	{
+        Dictionary<string, Xamarin.Forms.Maps.MapType> dicTiposMapa = new Dictionary<string, MapType>
+        {
+            {"Hibrido", Xamarin.Forms.Maps.MapType.Hybrid },
+            {"Satélite", Xamarin.Forms.Maps.MapType.Satellite },
+            {"Callejero", Xamarin.Forms.Maps.MapType.Street },
+        };
+
 		public MainPage()
 		{
 			InitializeComponent();
@@ -38,7 +45,22 @@ namespace ET45_GeoMapas
                 botonLocalizacion.IsEnabled = false;
             }
 
+            foreach (string mapType in dicTiposMapa.Keys)
+            {
+                pickerTipoMapa.Items.Add(mapType);
+            }
+            pickerTipoMapa.SelectedIndexChanged += PickerTipoMapa_SelectedIndexChanged;
+
             botonLocalizacion.Clicked += BotonLocalizacion_Clicked;
+        }
+
+        private void PickerTipoMapa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (pickerTipoMapa.SelectedIndex != -1)
+            {
+                string tipoMapa = pickerTipoMapa.Items[pickerTipoMapa.SelectedIndex];
+                miMapa.MapType = dicTiposMapa[tipoMapa];
+            }
         }
 
         private async void BotonLocalizacion_Clicked(object sender, EventArgs e)
@@ -69,6 +91,15 @@ namespace ET45_GeoMapas
 
                     var posicionMapa = new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude);
                     miMapa.MoveToRegion(MapSpan.FromCenterAndRadius(posicionMapa, Distance.FromMeters(1000)));
+
+                    Pin pin = new Pin
+                    {
+                        Type = PinType.Place,
+                        Position = posicionMapa,
+                        Label = "Estas aquí",
+                        Address = "Más información"
+                    };
+                    miMapa.Pins.Add(pin);
                 }
 
             }

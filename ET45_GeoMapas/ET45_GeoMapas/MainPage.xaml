@@ -16,8 +16,10 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
+        
         <maps:Map x:Name="miMapa" IsShowingUser="True" MapType="Hybrid" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
+        <Picker x:Name="pickerTipoMapa" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
 
         <Label x:Name="locationData" Text="Información" HorizontalOptions="Center" Font="Arial, 20" Grid.Row="1" >
             <Label.TextColor>
